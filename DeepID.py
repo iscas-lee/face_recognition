@@ -152,8 +152,8 @@ class DeepID():
         @brief : 
         @param : 
         '''
-        _command='rm -rf '+self.lmdb_train+'\n'
-        _command+='rm -rf '+self.lmdb_train+'\n'    
+        _command='del /F /S /Q  '+self.lmdb_train+'\n'
+        _command+='del /F /S /Q  '+self.lmdb_train+'\n'    
     
         _command+='echo "Creating train lmdb..."\n'
         
@@ -216,8 +216,8 @@ class DeepID():
         num_test=26
         num_test_mean=31
 
-        _command='cp '+self.net_proto_model+' '+self.net_proto+'\n'
-        _command+='cp '+self.solver_proto_model+' '+self.solver_proto+'\n'
+        _command='copy '+self.net_proto_model+' '+self.net_proto+'\n'
+        _command+='copy '+self.solver_proto_model+' '+self.solver_proto+'\n'
         
         _command+='sed -i -e \"'+str(num_train)+'c\\'+lmdb_train+'\" '+self.net_proto+'\n'
         _command+='sed -i -e \"'+str(num_train_mean)+'c\\'+imgmean+'\" '+self.net_proto+'\n'
@@ -258,8 +258,8 @@ class DeepID():
         num_test=26
         num_test_mean=31
 
-        _command='cp '+self.net_proto_model+' '+self.net_proto+'\n'
-        _command+='cp '+self.solver_proto_model+' '+self.solver_proto+'\n'
+        _command='copy '+self.net_proto_model+' '+self.net_proto+'\n'
+        _command+='copy '+self.solver_proto_model+' '+self.solver_proto+'\n'
         
         _command+='sed -i -e \"'+str(num_train)+'c\\'+lmdb_train+'\" '+self.net_proto+'\n'
         _command+='sed -i -e \"'+str(num_train_mean)+'c\\'+imgmean+'\" '+self.net_proto+'\n'
@@ -288,6 +288,7 @@ class DeepID():
         DeepID.fileopt(self.shtest,_command)
         os.system(_command)
 def demo(num):
+	
     deepID=DeepID('deepID','/home/ikode/caffe-master/','/home/ikode/caffe-master/examples/deepID/','/media/ikode/Document/big_materials/document/deep_learning/caffe/face_datasets/webface/croped/',num)
     ratio=9
 
